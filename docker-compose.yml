@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  centos:
+    build: ./centos
+    container_name: exam-boot-container
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./gradle-project:/gradle-project
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    privileged: true
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    container_name: exam-boot-mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - ./mysql/config/my.cnf:/etc/my.cnf
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+      - ./mysql/settings:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: crawler_db
+      MYSQL_USER: crawler_app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root

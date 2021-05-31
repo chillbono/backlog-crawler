@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backlog.crawler.mybatis.mapper.SchedulerConfigMapper">
+  <resultMap id="BaseResultMap" type="com.backlog.crawler.mybatis.entity.SchedulerConfig">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="scheduler_id" jdbcType="BIGINT" property="schedulerId" />
+    <result column="scheduler_type" jdbcType="VARCHAR" property="schedulerType" />
+    <result column="comparison_type" jdbcType="VARCHAR" property="comparisonType" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="exceeded_days" jdbcType="INTEGER" property="exceededDays" />
+    <result column="activated" jdbcType="BIT" property="activated" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    scheduler_id, scheduler_type, comparison_type, `comment`, exceeded_days, activated, 
+    created_at, updated_at
+  </sql>
+  <insert id="insertSelective" parameterType="com.backlog.crawler.mybatis.entity.SchedulerConfig">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into scheduler_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schedulerId != null">
+        scheduler_id,
+      </if>
+      <if test="schedulerType != null">
+        scheduler_type,
+      </if>
+      <if test="comparisonType != null">
+        comparison_type,
+      </if>
+      <if test="comment != null">
+        `comment`,
+      </if>
+      <if test="exceededDays != null">
+        exceeded_days,
+      </if>
+      <if test="activated != null">
+        activated,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schedulerId != null">
+        #{schedulerId,jdbcType=BIGINT},
+      </if>
+      <if test="schedulerType != null">
+        #{schedulerType,jdbcType=VARCHAR},
+      </if>
+      <if test="comparisonType != null">
+        #{comparisonType,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="exceededDays != null">
+        #{exceededDays,jdbcType=INTEGER},
+      </if>
+      <if test="activated != null">
+        #{activated,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.backlog.crawler.mybatis.entity.SchedulerConfig">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update scheduler_config
+    <set>
+      <if test="schedulerType != null">
+        scheduler_type = #{schedulerType,jdbcType=VARCHAR},
+      </if>
+      <if test="comparisonType != null">
+        comparison_type = #{comparisonType,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="exceededDays != null">
+        exceeded_days = #{exceededDays,jdbcType=INTEGER},
+      </if>
+      <if test="activated != null">
+        activated = #{activated,jdbcType=BIT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scheduler_id = #{schedulerId,jdbcType=BIGINT}
+  </update>
+</mapper>

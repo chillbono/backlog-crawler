@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.backlog.crawler.mybatis.mapper.SchedulerResultMapper">
+  <resultMap id="BaseResultMap" type="com.backlog.crawler.mybatis.entity.SchedulerResult">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    <id column="scheduler_result_id" jdbcType="BIGINT" property="schedulerResultId" />
+    <result column="scheduler_id" jdbcType="BIGINT" property="schedulerId" />
+    <result column="issue_id" jdbcType="BIGINT" property="issueId" />
+    <result column="issue_key" jdbcType="VARCHAR" property="issueKey" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="assignee_user_id" jdbcType="VARCHAR" property="assigneeUserId" />
+    <result column="assignee_user_name" jdbcType="VARCHAR" property="assigneeUserName" />
+    <result column="created_user_id" jdbcType="VARCHAR" property="createdUserId" />
+    <result column="created_user_name" jdbcType="VARCHAR" property="createdUserName" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    scheduler_result_id, scheduler_id, issue_id, issue_key, content, assignee_user_id, 
+    assignee_user_name, created_user_id, created_user_name, created_at, updated_at
+  </sql>
+  <insert id="insertSelective" parameterType="com.backlog.crawler.mybatis.entity.SchedulerResult">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    insert into scheduler_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schedulerResultId != null">
+        scheduler_result_id,
+      </if>
+      <if test="schedulerId != null">
+        scheduler_id,
+      </if>
+      <if test="issueId != null">
+        issue_id,
+      </if>
+      <if test="issueKey != null">
+        issue_key,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="assigneeUserId != null">
+        assignee_user_id,
+      </if>
+      <if test="assigneeUserName != null">
+        assignee_user_name,
+      </if>
+      <if test="createdUserId != null">
+        created_user_id,
+      </if>
+      <if test="createdUserName != null">
+        created_user_name,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schedulerResultId != null">
+        #{schedulerResultId,jdbcType=BIGINT},
+      </if>
+      <if test="schedulerId != null">
+        #{schedulerId,jdbcType=BIGINT},
+      </if>
+      <if test="issueId != null">
+        #{issueId,jdbcType=BIGINT},
+      </if>
+      <if test="issueKey != null">
+        #{issueKey,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeUserId != null">
+        #{assigneeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeUserName != null">
+        #{assigneeUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUserId != null">
+        #{createdUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUserName != null">
+        #{createdUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.backlog.crawler.mybatis.entity.SchedulerResult">
+    <!-- @mbg.generated: generated automatically, do not modify! -->
+    update scheduler_result
+    <set>
+      <if test="schedulerId != null">
+        scheduler_id = #{schedulerId,jdbcType=BIGINT},
+      </if>
+      <if test="issueId != null">
+        issue_id = #{issueId,jdbcType=BIGINT},
+      </if>
+      <if test="issueKey != null">
+        issue_key = #{issueKey,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeUserId != null">
+        assignee_user_id = #{assigneeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="assigneeUserName != null">
+        assignee_user_name = #{assigneeUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUserId != null">
+        created_user_id = #{createdUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUserName != null">
+        created_user_name = #{createdUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scheduler_result_id = #{schedulerResultId,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBulk" parameterType="java.util.List">
+    insert into scheduler_result
+    (scheduler_result_id, scheduler_id, issue_id, issue_key, content, assignee_user_id, assignee_user_name, created_user_id, created_user_name, created_at, updated_at)
+    values
+    <foreach collection="list" item="val" separator=",">
+      (
+      #{val.schedulerResultId,jdbcType=BIGINT},
+      #{val.schedulerId,jdbcType=BIGINT},
+      #{val.issueId,jdbcType=BIGINT},
+      #{val.issueKey,jdbcType=VARCHAR},
+      #{val.content,jdbcType=VARCHAR},
+      #{val.assigneeUserId,jdbcType=VARCHAR},
+      #{val.assigneeUserName,jdbcType=VARCHAR},
+      #{val.createdUserId,jdbcType=VARCHAR},
+      #{val.createdUserName,jdbcType=VARCHAR},
+      #{val.createdAt,jdbcType=TIMESTAMP},
+      #{val.updatedAt,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+</mapper>
